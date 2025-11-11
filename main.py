@@ -22,8 +22,7 @@ if __name__ == "__main__":
     print(f'Audio extracted with duration: {duration} second and {fps}') 
 
 # ---
-# теперь как-то с помощью OpenAIs Whisper
-# будет дрочь скорее всего
+# теперь как-то с помощью OpenAIs Whisper делаем транскрибацию
 # ---
 
 # загружаем модель
@@ -35,10 +34,6 @@ mel = whisper.log_mel_spectrogram(audio).to(model.device)
 # вывводи резкльтат
 result = model.transcribe("extracted_audio.mp3")
 result_srt = model.transcribe("extracted_audio.mp3", verbose=True, fp16=False, task="transcribe")
-
-# ---
-# хреначим окончательный вариант
-# ---
 
 # ---
 # записываем в файлм тайм-коды и субтиртры
