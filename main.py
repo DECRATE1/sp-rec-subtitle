@@ -62,8 +62,6 @@ with open("subtitles.srt", "w", encoding="utf-8") as f:
         f.write(f"{start} --> {end}\n")     
         f.write(f"{text}\n\n")              
 
-import subprocess
-
 def burn_subtitles(video_path, srt_path, output_path):
     cmd = [
         "ffmpeg",
