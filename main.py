@@ -2,6 +2,7 @@ import moviepy
 import whisper
 import ffmpeg
 import subprocess
+import pysubs2
 
 # ---
 # вытащили звук из видоса
@@ -37,7 +38,6 @@ result_srt = model.transcribe("extracted_audio.mp3", verbose=True, fp16=False, t
 
 # ---
 # записываем в файлм тайм-коды и субтиртры
-# и накладываем на видео
 # ---
 
 def format_time(t: float) -> str:
@@ -56,24 +56,35 @@ with open("subtitles.srt", "w", encoding="utf-8") as f:
         f.write(f"{i}\n")                   
         f.write(f"{start} --> {end}\n")     
         f.write(f"{text}\n\n")   
-          
+
+# ---
+# изначально хотел сразу записать в ass, но он тогда не применяет стили, пришлось сначало записывать в srt, а потом конвертировать в ass
+# конвертируем файл srt в ass по другому просто не работет
+# ---
+
+subs = pysubs2.load("subtitles.srt", encoding="utf-8")
+# меняем стиль
+subs.styles["Default"].fontname = "Robot"
+subs.styles["Default"].fontsize = 14
+subs.styles["Default"].primarycolor = pysubs2.Color(255, 255, 255)  # белый текст
+subs.styles["Default"].backcolor = pysubs2.Color(0, 0, 0, a=128)           # чёрный фон
+subs.styles["Default"].borderstyle = 3                              # фон-бокс
+
+subs.save("subtitles.ass")
+
 # ---
 # объединяем все вместе
 # ---
 
-def add_srt_to_video(input_video, subtitles_file, output_file):
-
-    ffmpeg_command = [
+def burn_ass_subtitles(input_video, ass_file, output_file):
+    cmd = [
         "ffmpeg",
         "-i", input_video,
-        "-vf", f"subtitles={subtitles_file}:force_style='FontName=Robot,FontSize=14,PrimaryColour=&000000,BackColour=&H000000,BorderStyle=3,Outline=0,Shadow=0,Alignment=2,MarginV=10'",
+        "-vf", f"ass={ass_file}",
         "-c:a", "copy",
         output_file,
         "-y"
     ]
-    subprocess.run(ffmpeg_command, check=True)
+    subprocess.run(cmd, check=True)
 
-
-if __name__ == "__main__":
-    add_srt_to_video("video_test.mp4", "subtitles.srt", "output.mp4")
-
+burn_ass_subtitles("video_test.mp4", "subtitles.ass", "output.mp4")
