@@ -55,23 +55,25 @@ with open("subtitles.srt", "w", encoding="utf-8") as f:
 
         f.write(f"{i}\n")                   
         f.write(f"{start} --> {end}\n")     
-        f.write(f"{text}\n\n")              
-
+        f.write(f"{text}\n\n")   
+          
 # ---
-# через shell команду объединяем все вместе
+# объединяем все вместе
 # ---
 
-def burn_subtitles(video_path, srt_path, output_path):
-    cmd = [
+def add_srt_to_video(input_video, subtitles_file, output_file):
+
+    ffmpeg_command = [
         "ffmpeg",
-        "-i", video_path,
-        "-vf", f"subtitles={srt_path}",
-        "-c:a", "copy",   # аудио копируем без перекодирования
-        output_path
+        "-i", input_video,
+        "-vf", f"subtitles={subtitles_file}:force_style='FontName=Robot,FontSize=14,PrimaryColour=&000000,BackColour=&H000000,BorderStyle=3,Outline=0,Shadow=0,Alignment=2,MarginV=10'",
+        "-c:a", "copy",
+        output_file,
+        "-y"
     ]
-    subprocess.run(cmd, check=True)
-# ---
-# результат
-# ---
+    subprocess.run(ffmpeg_command, check=True)
 
-burn_subtitles("video_test.mp4", "subtitles.srt", "output.mp4")
+
+if __name__ == "__main__":
+    add_srt_to_video("video_test.mp4", "subtitles.srt", "output.mp4")
+
