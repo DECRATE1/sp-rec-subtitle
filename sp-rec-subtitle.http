@@ -1,0 +1,6 @@
+@sp_rec_subtitle_HostAddress = http://localhost:5023
+
+GET {{sp_rec_subtitle_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
