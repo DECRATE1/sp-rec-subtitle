@@ -1,158 +1,41 @@
-bin/
-obj/
-out/
-artifacts/
-publish/
-*.log
-*.vspscc
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-.vs/
-.vsconfig
-*.user
-*.userosscache
-*.suo
-*.sln.docstates
-
-.vscode/
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.vscode/backup/
-
-.idea/
-*.sln.iml
-*.ipr
-*.iws
-.idea_modules/
-
-_ReSharper*/
-.[Rr]e[Ss]harper
-.reSharper
-_ReSharper.
-resharper*
-
-ScaffoldingReadMe.txt
-
-Migrations/DesignTimeDbContextFactory.cs
-/Migrations//DesignTimeDbContextFactory.cs
-
-*.userprefs
-*.rsuser
-*.resharper
-*.DotSettings.user
-
-*.nupkg
-packages/
-.nuget/packages/
-.nuget/packages.lock.json
-project.lock.json
-project.fragment.lock.json
-packages.lock.json
-
-*.dll
-*.exe
-*.exe.config
-*.dll.config
-*.pdb
-*.mdb
-
-*.Publish.xml
-*.azurePubxml
-publish_profiles/
-
-TestResults/
-*.trx
-.coverage
-coverage.xml
-*.opencover.xml
-coverage/
-
-/.vs/**/*.db
-iisexpress/
-IISExpress/
-
-node_modules/
-wwwroot/lib/
-temp/
-npm-debug.log
-yarn-error.log
-yarn-debug.log
+# dependencies
+/node_modules
+/.pnp
 .pnp.*
-.lock-wscript
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-*.pfx
-*.cer
-*.key
+# testing
+/coverage
 
-_ReSharper/
-.[Rr]e[Ss]harper
-.reSharper
-_ReSharper.
+# next.js
+/.next/
+/out/
 
-*.pidb
-*.userprefs
-*.svclog
+# production
+/build
 
-.local.settings.json
+# misc
+.DS_Store
+*.pem
 
-*.coverage
-.coveragexml
-coverage.xml
-*.prof
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-*.mdf
-*.ldf
+# env files (can opt-in for committing if needed)
+.env*
 
-*.dmp
-*.dump
+# vercel
+.vercel
 
-*.sln.iml
-
-.vscode/settings.json
-.vscode/tasks.json
-.vscode/launch.json
-.vscode/extensions.json
-
-Generated/
-obj/**/project.assets.json
-project.assets.json
-*.g.props
-*.g.targets
-
-msbuild.log
-*.binlog
-
-*.tmp
-.temp
-~$
-
-appsettings.*.json
-appsettings.Local.json
-secrets.json
-secrets.development.json
-
-.vsts-ci/
-.azure-pipelines/
-
-docker-compose.override.yml
-docker-compose.*.yml
-
-*.psd
-*.ai
-*.eps
-
-*.mp4
-*.mov
-*.zip
-*.tar.gz
-*.7z
-
-project.lock.json
-
-*.dbmdl
-*.dbproj.user
-
-.tool/
-.nuget/
-.vs-test/
+# typescript
+*.tsbuildinfo
+next-env.d.ts
