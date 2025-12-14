@@ -7,3 +7,58 @@ __pycache__/
 build/
 dist/
 *.egg-info/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm / VSCode
+.idea/
+.vscode/
+
+# Django / Flask stuff
+*.log
+*.pot
+*.pyc
+db.sqlite3
+instance/
+.webassets-cache
+
+# mypy / pyright / pylint
+.mypy_cache/
+.pyright/
+pylint-report.txt
+
+# Other
+*.swp
