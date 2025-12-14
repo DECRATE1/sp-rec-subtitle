@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="flex justify-center items-center flex-col bg-black overflow-hidden">
         <Header></Header>
         <main className="flex max-w-360 max-h-full w-screen h-screen">
